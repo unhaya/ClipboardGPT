@@ -25,11 +25,9 @@ GPT3.5と４を選択できます。４は遅いです
 解決していない問題・・・
 パラメーターの数値カスタマイズが保存できない
 ログのバックアップがうまくできない
-どなたかアップデートしていただけると嬉しいです。
 
-・・・・・・・・・・・・・・・・・・・・・・・・・・
 
-# ClipboardGPT
+# ClipboardGPT（Automatic translation）
 
 Feature 1
 Enter conditions in the two blank windows at the top of the window.
