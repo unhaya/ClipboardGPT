@@ -27,4 +27,37 @@ GPT3.5と４を選択できます。４は遅いです
 ログのバックアップがうまくできない
 どなたかアップデートしていただけると嬉しいです。
 
+・・・・・・・・・・・・・・・・・・・・・・・・・・
+
+# ClipboardGPT
+
+Feature 1
+Enter conditions in the two blank windows at the top of the window.
+If no instructions are given, ChatGPT will generate answers according to the system prompts.
+You can add additional conditions to increase accuracy when you want accurate answers to be generated.
+
+Feature 2
+Input to GPT is done using Clipboard.
+With text on the clipboard, the shortcut operation control+Alt+G
+GPT will generate an answer.
+The answers are automatically stored in the clipboard. *If the SAVE button is checked
+
+Feature 3
+Because the API is used, privacy issues can be cleared.
+
+Feature 4
+You can adjust parameters for GPT responses.
+Currently, parameters are named and can be selected from the bottom of the window.
+
+Feature 5
+You can choose between GPT 3.5 and GPT 4. 4 is slower.
+
+
+Unresolved issues...
+Numeric customization of parameters cannot be saved
+Log backup does not work properly
+I would appreciate it if someone could update this.
+
+
+
 (C)Unhaya
