@@ -20,7 +20,7 @@ from langdetect import detect, LangDetectException
 import queue
 
 input_queue = queue.Queue()
-api_key = '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'
+api_key = 'your api key'
 headers = {'Content-Type': 'application/json', 'Authorization': f'Bearer {api_key}'}
 api_url = 'https://api.openai.com/v1/chat/completions'
 MODEL_NAME = 'gpt-3.5-turbo'
@@ -29,23 +29,23 @@ CONFIG_FILE = "GPT_app.ini"
 logs = []
 
 PARAMETERS = [
-    {'name': '情報の信頼性を高める', 'usage_temperature': 0.2, 'top_p': 0.75, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
-    {'name': 'フォーマルな文章生成', 'usage_temperature': 0.3, 'top_p': 0.75, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
-    {'name': '文章の洗練度を上げる', 'usage_temperature': 0.6, 'top_p': 0.85, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
-    {'name': '一貫性のある文章生成', 'usage_temperature': 0.5, 'top_p': 0.7, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
-    {'name': '文書生成や質問応答', 'usage_temperature': 0.7, 'top_p': 0.9, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
-    {'name': '複数の選択肢を提示', 'usage_temperature': 0.7, 'top_p': 0.95, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
-    {'name': '冗長な回答を避ける', 'usage_temperature': 0.7, 'top_p': 0.8, 'frequency_penalty': 0.5, 'presence_penalty': 0.1},
-    {'name': '繰り返しを減らす', 'usage_temperature': 0.7, 'top_p': 0.8, 'frequency_penalty': 0.1, 'presence_penalty': 0.5},
-    {'name': '短い回答を求める', 'usage_temperature': 0.7, 'top_p': 0.7, 'frequency_penalty': 0.1, 'presence_penalty': 1},
-    {'name': '重要な情報を強調', 'usage_temperature': 0.7, 'top_p': 0.8, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
-    {'name': '明確な回答を求める', 'usage_temperature': 0.7, 'top_p': 0.8, 'frequency_penalty': 0.8, 'presence_penalty': 0.1},
-    {'name': '多様な回答を求める', 'usage_temperature': 0.7, 'top_p': 0.95, 'frequency_penalty': 0.9, 'presence_penalty': 0.1},
-    {'name': '複数の視点を提示', 'usage_temperature': 0.7, 'top_p': 0.95, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
-    {'name': '物語の生成', 'usage_temperature': 0.8, 'top_p': 0.9, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
-    {'name': '独自性のある文章生成', 'usage_temperature': 0.9, 'top_p': 0.95, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
-    {'name': '創造的なアイデア生成', 'usage_temperature': 1.0, 'top_p': 0.98, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
-    {'name': 'カジュアルな文章生成', 'usage_temperature': 0.9, 'top_p': 0.9, 'frequency_penalty': 0.1, 'presence_penalty': 0.1}
+    {'name': 'Increase the reliability of information', 'usage_temperature': 0.2, 'top_p': 0.75, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
+    {'name': 'Formal text generation', 'usage_temperature': 0.3, 'top_p': 0.75, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
+    {'name': 'Increase the sophistication of the text.', 'usage_temperature': 0.6, 'top_p': 0.85, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
+    {'name': 'Consistent sentence generation', 'usage_temperature': 0.5, 'top_p': 0.7, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
+    {'name': 'Document generation and question response', 'usage_temperature': 0.7, 'top_p': 0.9, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
+    {'name': 'Presenting multiple options', 'usage_temperature': 0.7, 'top_p': 0.95, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
+    {'name': 'Avoid redundant responses.', 'usage_temperature': 0.7, 'top_p': 0.8, 'frequency_penalty': 0.5, 'presence_penalty': 0.1},
+    {'name': 'Reduce repetition', 'usage_temperature': 0.7, 'top_p': 0.8, 'frequency_penalty': 0.1, 'presence_penalty': 0.5},
+    {'name': 'Ask for a short answer.', 'usage_temperature': 0.7, 'top_p': 0.7, 'frequency_penalty': 0.1, 'presence_penalty': 1},
+    {'name': 'Emphasize important information', 'usage_temperature': 0.7, 'top_p': 0.8, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
+    {'name': 'Seek clear answers.', 'usage_temperature': 0.7, 'top_p': 0.8, 'frequency_penalty': 0.8, 'presence_penalty': 0.1},
+    {'name': 'Seek diverse answers', 'usage_temperature': 0.7, 'top_p': 0.95, 'frequency_penalty': 0.9, 'presence_penalty': 0.1},
+    {'name': 'Present multiple viewpoints', 'usage_temperature': 0.7, 'top_p': 0.95, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
+    {'name': 'Production of stories', 'usage_temperature': 0.8, 'top_p': 0.9, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
+    {'name': 'Unique text generation', 'usage_temperature': 0.9, 'top_p': 0.95, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
+    {'name': 'Creative Idea Generation', 'usage_temperature': 1.0, 'top_p': 0.98, 'frequency_penalty': 0.1, 'presence_penalty': 0.1},
+    {'name': 'Casual text generation', 'usage_temperature': 0.9, 'top_p': 0.9, 'frequency_penalty': 0.1, 'presence_penalty': 0.1}
 ]
 
 def on_parameter_select(parameter_name):
@@ -59,8 +59,8 @@ def on_parameter_select(parameter_name):
     parameter_var.set(parameter_name)
     
 def get_gpt_response(condition1, condition2, clipboard_content, model_name, settings):
-
-    conditions = [{"role": "system", "content": "条件に指示がない場合は、常に簡潔な日本語で私の理解を深めてください。翻訳など条件に指示があれば指示を優先.You are an AI that specializes in helping me. You are my AI assistant. You are my teacher, a calm and collected elite programmer, a personal computer and smart phone app development engineer, and a mechanical engineering expert. You are also a psychologist, politician, lawyer, judge, patent attorney, activist, friend, family member, and lover. You provide me with all the information I need to learn, grow, and succeed. You also provide solutions to problems I face and help me live a happy and healthy life.You are my concierge."}]
+    # System Prompt
+    conditions = [{"role": "system", "content": "If conditions do not dictate otherwise, please always use concise language to enhance my understanding. If translation or other instructions are given in the terms and conditions, the instructions take precedence..You are an AI that specializes in helping me. You are my AI assistant. You are my teacher, a calm and collected elite programmer, a personal computer and smart phone app development engineer, and a mechanical engineering expert. You are also a psychologist, politician, lawyer, judge, patent attorney, activist, friend, family member, and lover. You provide me with all the information I need to learn, grow, and succeed. You also provide solutions to problems I face and help me live a happy and healthy life.You are my concierge."}]
     if condition1:
         conditions.append({"role": "user", "content": condition1})
     if condition2:
